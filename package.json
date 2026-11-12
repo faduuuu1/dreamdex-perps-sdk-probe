@@ -1,0 +1,16 @@
+{
+  "name": "dreamdex-perps",
+  "version": "1.0.0",
+  "description": "Read-only Markets SDK probe for dreamDEX perps on Somnia Hideki testnet, with feedback items for the Perps Builder Bounty",
+  "scripts": {
+    "markets": "node list-perp-markets.mjs",
+    "repro": "node wstest.mjs omit",
+    "genkey": "node genkey.mjs"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@somnia-chain/markets-sdk": "^0.33.0",
+    "viem": "^2.57.18"
+  }
+}

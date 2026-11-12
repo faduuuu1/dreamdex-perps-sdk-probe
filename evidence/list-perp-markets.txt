@@ -1,0 +1,84 @@
+dreamDEX perp markets - read-only inventory
+====================================================================================
+chain       Hideki Testnet (50383)  testnet=true
+rpc         https://api.hideki.infra.testnet.somnia.network
+explorer    https://explorer.testnet.somnia.network/tokyo
+indexer     https://hideki-dev.smk.somnia.host/v1/graphql
+marginBank  0x478769E1177C0773c43A593DCCc4Ad15F15F1394
+sdk         @somnia-chain/markets-sdk 0.33.0
+read at     2026-11-12T03:42:01.846Z
+
+MARKET                   LAST         MARK     FUND 8H       TICK     MIN QTY   IM %    TRADES
+---------------- ------------ ------------ ----------- ---------- ----------- ------ ---------
+1000PEPE-PERP        0.004557     0.004597    +0.0100%    1.00e-7     2700.00  10.00    326939
+ADA-PERP             0.172900     0.173035    +0.0100%   0.000100     46.0000  10.00    368501
+ADLT-PERP             3000.00      3450.00    +0.0100%   0.010000    0.004000   5.00     31250
+AMD-PERP                    -     566.5729    -0.0967%   0.010000    0.020000  20.00         0
+AVAX-PERP              8.5720       8.5575    +0.0100%   0.001000      1.4000  10.00    376070
+BNB-PERP             678.5330     677.9568    +0.0166%   0.001000    0.014000  10.00    422434
+BTC-PERP             73800.50     73652.77    +0.1095%   0.100000    0.000130   2.50   1683127
+COIN-PERP                   -     134.2720    +0.0100%   0.010000    0.074000  20.00         0
+DOGE-PERP            0.067370     0.067205    +0.0100%    1.00e-5    120.0000  10.00    383672
+ETH-PERP              2048.42      2051.79    -0.0361%   0.010000    0.004000   2.50    876196
+GOOGL-PERP                  -     295.0793    +0.0100%   0.010000    0.035000  10.00         0
+HOOD-PERP                   -      84.0467    +0.0100%   0.010000    0.121000  20.00         0
+HYNX-PERP                   -     970.5850    +0.0100%   0.100000    0.011000  20.00         0
+HYPE-PERP             72.0100      72.0111    +0.0100%   0.010000    0.120000   2.50    626726
+INTC-PERP                   -      61.4537    +0.0100%   0.010000    0.170000  20.00         0
+LINK-PERP             10.1520      10.1227    +0.0100%   0.001000    0.900000  10.00    372534
+LIT-PERP               3.2544       3.2679    +0.0100%   0.000100      2.8000  10.00    343274
+LITE-PERP            681.4700     635.6997    +0.0100%   0.010000    0.017000  20.00         1
+LOADTEST-PERP         2403.52         null        null   0.010000    0.004000   5.00      2498
+LOADTEST-PERP         5677.35      3551.40    +0.0100%   0.010000    0.004000   5.00      1425
+LOADTEST-PERP         3745.61      3764.00    +0.0100%   0.010000    0.004000   5.00      1250
+LOADTEST-PERP         3494.41      3492.66    +0.0100%   0.010000    0.004000   5.00      1970
+LOADTEST-PERP         8200.91      7138.37    +0.0100%   0.010000    0.004000   5.00      5550
+MRVL-PERP                   -     165.1240    +0.0100%   0.010000    0.065000  20.00         0
+MSTR-PERP            123.5300     120.0348    +1.1130%   0.010000    0.080000  20.00         1
+NEAR-PERP              3.5476       3.5525    +0.0100%   0.000100      5.1000  10.00    528105
+PUMP-PERP            0.003474     0.003481    +0.0100%    1.00e-6     1800.00  10.00    336627
+SOL-PERP              83.0500      83.2876    +0.0100%   0.010000    0.100000   2.50    698653
+SUI-PERP             0.819100     0.817573    +0.0100%   0.000100     13.0000  10.00    390896
+TAO-PERP             215.9500     214.7444    +0.0100%   0.001000    0.044000  10.00    357935
+TSLA-PERP                   -     387.1889    +0.0100%   0.010000    0.027000  10.00         0
+VVV-PERP              19.7750      19.8148    +0.0100%   0.001000    0.440000  10.00    338442
+WLD-PERP             0.305900     0.305066    +0.0100%   0.000100     26.0000  10.00    366421
+WTI-PERP                    -      84.9444    +0.0100%   0.001000    0.120000  10.00         0
+XAG-PERP              52.2640      51.4061    +0.5061%   0.001000    0.200000  10.00         3
+XAU-PERP              4014.40      3976.90    +0.2206%   0.100000    0.002500  10.00         3
+XLM-PERP             0.145300     0.146587    +0.0100%   0.000100     54.0000  10.00    361482
+XRP-PERP               1.0411       1.0448    -0.0198%   0.000100      6.9000   5.00    455009
+ZEC-PERP             982.5680     992.2004    +0.0100%   0.001000    0.009000  10.00    381226
+ZRO-PERP               1.5535       1.5540    +0.0100%   0.000100      5.1000  10.00    338080
+
+total perp markets: 40
+
+duplicate baseSymbol values (symbol is NOT a unique market key)
+------------------------------------------------------------------------------------
+LOADTEST       5 markets
+               0x736850b162802db2b54d766c686e65e1b31eb954
+               0x7d19508851d5397fd0e3b648fe30982bf86268a5
+               0xf909076d4abc6e7993e499b533e2b2a8cfbe4dd4
+               0xb738977760660b455b0ef9e7fa3eec0205c1292d
+               0x7982b98b08f9956e6665366ae93c466b44b044a5
+
+indexer field coverage
+------------------------------------------------------------------------------------
+markPrice                  39/40     missing: LOADTEST
+indexPrice                 39/40     missing: LOADTEST
+fundingRate                39/40     missing: LOADTEST
+cumulativeFundingPerUnit   39/40     missing: LOADTEST
+fundingUpdatedAt           39/40     missing: LOADTEST
+fundingWindowSec           39/40     missing: LOADTEST
+fundingIntervalSec         39/40     missing: LOADTEST
+stopRegistry               34/40     missing: ADLT, LOADTEST, LOADTEST, LOADTEST, LOADTEST, LOADTEST
+
+perp system config for marginBank 0x478769E1177C0773c43A593DCCc4Ad15F15F1394
+------------------------------------------------------------------------------------
+read failed: @somnia-chain/markets-sdk: rpc getBlock failed: genesis check failed
+
+perp voucher eligibility for 0x9DCd8287446e0DD4D2892F610D047c7F87267A6c
+------------------------------------------------------------------------------------
+marginBank 0x478769e1177c0773c43a593dccc4ad15f15f1394
+  eligible                 true
+  grantAmount              1000000000000000000000
