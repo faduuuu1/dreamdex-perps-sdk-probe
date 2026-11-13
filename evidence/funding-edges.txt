@@ -1,0 +1,56 @@
+--- documented identity: 8h is a no-op at a 28800 window ---
+fundingRate8h(1e15, 28800)                               => 1000000000000000n
+normalizeFundingRate(1e15, 28800, 28800)                 => 1000000000000000n
+
+--- documented: truncates toward zero, sign preserved ---
+normalizeFundingRate(7, 28800, 3600)   [7/8 -> 0]        => 0n
+normalizeFundingRate(-7, 28800, 3600)  [-7/8 -> 0]       => 0n
+fundingRate1h(1e15, 28800)                               => 125000000000000n
+fundingRate1h(-1e15, 28800)                              => -125000000000000n
+
+--- zero / missing window (my item 04 saw null windows on a live pool) ---
+fundingRate8h(1e15, 0)                                   => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+normalizeFundingRate(1e15, 0, 3600)                      => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+fundingRate1h(1e15, 0)                                   => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+annualizedFundingRate(1e15, 0)                           => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+
+--- NaN / undefined window (what a null field coerces to) ---
+fundingRate8h(1e15, NaN)                                 => THROWS RangeError: fundingWindowSec must be positive, got NaN — it is the rate's denominator and ca
+fundingRate8h(1e15, undefined)                           => THROWS RangeError: fundingWindowSec must be positive, got undefined — it is the rate's denominator 
+normalizeFundingRate(1e15, NaN, 3600)                    => THROWS RangeError: fundingWindowSec must be positive, got NaN — it is the rate's denominator and ca
+
+--- negative / fractional window ---
+fundingRate8h(1e15, -28800)                              => THROWS RangeError: fundingWindowSec must be positive, got -28800 — it is the rate's denominator and
+normalizeFundingRate(1e15, 28800.5, 3600)                => 125000000000000n
+normalizeFundingRate(1e15, 28800, 3600.5)                => 125000000000000n
+
+--- per-interval and intervalsPerWindow ---
+fundingRatePerInterval(1e15, 28800, 3600)                => 125000000000000n
+fundingRatePerInterval(1e15, 28800, 0)                   => 0n
+intervalsPerWindow(28800, 3600)   [doc says 8]           => 8
+intervalsPerWindow(28800, 0)                             => THROWS RangeError: fundingIntervalSec must be positive, got 0
+intervalsPerWindow(28800, 7000)   [non-integer]          => 4
+intervalsPerWindow(0, 3600)                              => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+
+--- annualized ---
+annualizedFundingRate(1e15, 28800)  [~1095x]             => 1.095
+annualizedFundingRate(-1e15, 28800)                      => -1.095
+
+--- the asymmetry, side by side ---
+normalizeFundingRate(1e15, 0, 3600)      window=0        => THROWS RangeError: fundingWindowSec must be positive, got 0 — it is the rate's denominator and cann
+normalizeFundingRate(1e15, 28800, 0)     target=0        => 0n
+normalizeFundingRate(1e15, 28800, null)  target=null     => 0n
+normalizeFundingRate(1e15, 28800, -3600) target<0        => -125000000000000n
+intervalsPerWindow(28800, 0)             same arg        => THROWS RangeError: fundingIntervalSec must be positive, got 0
+fundingRatePerInterval(-2.5e15, 28800, 3600)  ok         => -312500000000000n
+fundingRatePerInterval(-2.5e15, 28800, 0)     zero       => 0n
+fundingRatePerInterval(-2.5e15, 28800, null)  zero       => 0n
+fundingRatePerInterval(-2.5e15, 28800, -3600) flip       => 312500000000000n
+
+--- the same argument in two more helpers ---
+isFundingStale(fresh 10s ago, interval=3600)             => false
+isFundingStale(fresh 10s ago, interval=0)                => true
+isFundingStale(fresh 10s ago, interval=-3600)            => true
+isFundingStale(fresh 10s ago, interval=null)             => true
+densifyFundingBuckets(rows, intervalSeconds=0)           => THROWS RangeError: intervalSeconds must be positive, got 0
+densifyFundingBuckets(rows, intervalSeconds=-3600)       => THROWS RangeError: intervalSeconds must be positive, got -3600

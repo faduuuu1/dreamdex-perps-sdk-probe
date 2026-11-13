@@ -5,7 +5,8 @@
   "scripts": {
     "markets": "node list-perp-markets.mjs",
     "repro": "node wstest.mjs omit",
-    "genkey": "node genkey.mjs"
+    "genkey": "node genkey.mjs",
+    "funding": "node funding-edges.mjs"
   },
   "keywords": [],
   "type": "module",
