@@ -111,6 +111,40 @@ Two concrete asks, either of which would help on its own:
 - retry the chain handshake, or
 - report the transport failure rather than attributing it to the genesis.
 
+## The documented cause does not fit the evidence
+
+*Perps on Testnet for Developers* lists this under Common pitfalls:
+
+> The SDK reads the chain over WebSocket. An environment that only proxies HTTP
+> fails on the first chain read with `genesis check failed`. Give it access to
+> the WebSocket endpoint above.
+
+That is a real failure mode and worth documenting, but it cannot be the cause
+of what this report describes, and a developer who reads it will go looking at
+their network egress instead of retrying.
+
+Three observations rule it out:
+
+- The failures here happened **with** WebSocket access, on a machine that
+  reaches `wss://api.hideki.infra.testnet.somnia.network/ws` directly, with no
+  HTTP-only proxy in between.
+- They are **intermittent**. A configuration problem does not pass four runs out
+  of six. `evidence/wsrpcurl-repro.txt` records 6/6 succeeding with `wsRpcUrl`
+  omitted and 4/6 with it set explicitly.
+- They are **not first-read only**. The decisive case above is a single process
+  where `getPerpSystemConfig` failed the genesis check and the next chain read,
+  through the same client and the same socket, succeeded seconds later. A
+  missing WebSocket cannot produce that, in either order.
+
+So the documentation names a cause that the error message already implies, and
+both point away from what is actually happening. Whatever is being detected, it
+is transient and it is not the genesis: the genesis hash was identical across
+twelve reads on two hostnames.
+
+Suggested documentation fix: keep the HTTP-only note, and add that the same
+message also appears transiently on a correctly configured WebSocket
+connection, where the remedy is a retry rather than a network change.
+
 ## Environment
 
 - SDK version: `@somnia-chain/markets-sdk` 0.33.0
