@@ -80,6 +80,7 @@ wrong one does not necessarily fail loudly. See
 | 06 | [Docs pin 0.32.1 while npm installs 0.33.0](feedback/06-docs-sdk-version-drift.md) | normal | docs |
 | 07 | [fundingIntervalSec is validated in two funding helpers and ignored in three](feedback/07-funding-interval-unvalidated-silent-zero.md) | major | SDK |
 | 08 | [decodeRevert reports transport failures as contract reverts](feedback/08-revert-helpers-not-exported.md) | major | SDK |
+| 09 | [Nothing says the HTTP and WebSocket APIs do not cover perps](feedback/09-http-api-does-not-cover-perps.md) | normal | docs |
 
 Each file follows the structure the bounty asks for: title, severity, area, steps to
 reproduce, expected, actual, evidence and environment.

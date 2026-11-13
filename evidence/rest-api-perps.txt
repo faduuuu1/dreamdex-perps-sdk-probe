@@ -1,0 +1,17 @@
+The two environments the HTTP API docs list:
+  mainnet  5031   api.dreamdex.io/v0      -> 200  4 markets, kinds=spot
+  testnet  50312  stg.api.dreamdex.io/v0  -> 200  3 markets, kinds=spot
+
+Perps run on Hideki 50383. Asking for perps anyway:
+  /v0/markets?kind=perp                   -> 200  0 markets, kinds=(none)
+  /v0/perp/markets                        -> 404  404 page not found
+
+
+Is there a Hideki REST host at all?
+  hideki.api.dreamdex.io                  -> ERR  fetch failed
+  api.hideki.dreamdex.io                  -> ERR  fetch failed
+  perps.api.dreamdex.io                   -> ERR  fetch failed
+  testnet.api.dreamdex.io                 -> ERR  fetch failed
+
+For comparison, the Hideki GraphQL indexer the SDK uses:
+  hideki-dev.smk.somnia.host/v1/graphql   -> 40 perp markets

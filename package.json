@@ -7,7 +7,8 @@
     "repro": "node wstest.mjs omit",
     "genkey": "node genkey.mjs",
     "funding": "node funding-edges.mjs",
-    "revert": "node revert-classification.mjs"
+    "revert": "node revert-classification.mjs",
+    "rest": "node rest-api-perps.mjs"
   },
   "keywords": [],
   "type": "module",
