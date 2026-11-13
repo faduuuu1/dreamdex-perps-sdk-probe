@@ -6,7 +6,8 @@
     "markets": "node list-perp-markets.mjs",
     "repro": "node wstest.mjs omit",
     "genkey": "node genkey.mjs",
-    "funding": "node funding-edges.mjs"
+    "funding": "node funding-edges.mjs",
+    "revert": "node revert-classification.mjs"
   },
   "keywords": [],
   "type": "module",

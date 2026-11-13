@@ -1,0 +1,18 @@
+isRevert exported from package root       : false
+isMissingContractView exported from root  : false
+decodeRevert exported from package root   : true
+toSdkError exported from package root     : false
+
+decodeRevert(a connect timeout):
+  constructor : ContractRevertError
+  errorName   : undefined
+  reason      : fetch failed
+  data        : undefined
+  message     : @somnia-chain/markets-sdk: getPerpSystemConfig reverted: fetch failed
+  cause code  : UND_ERR_CONNECT_TIMEOUT
+
+--- the same for other transport failures ---
+  connect timeout  -> ContractRevertError, errorName=undefined, message="@somnia-chain/markets-sdk: getPerpSystemConfig reverted: fetch"
+  socket hang up   -> ContractRevertError, errorName=undefined, message="@somnia-chain/markets-sdk: getPerpSystemConfig reverted: socke"
+  dns failure      -> ContractRevertError, errorName=undefined, message="@somnia-chain/markets-sdk: getPerpSystemConfig reverted: getad"
+  http 429         -> ContractRevertError, errorName=undefined, message="@somnia-chain/markets-sdk: getPerpSystemConfig reverted: Too M"
